@@ -1,0 +1,12 @@
+<h1>Login</h1>
+<div class="container">
+<small class = "alert alert-warning" *ngIf = "invaldLogin" >{{erroeMessage}}</small>
+<br>
+<div>
+User Name : <input type="text" name="username" [(ngModel)]="username" />
+Password : <input type="Password" id = "password" name ="password" [(ngModel)]="password" />
+<!--<button (click)="loginSubmit()">login</button>>
+<button (click)="loginSubmitBasicAuth()">login</button>-->
+<button (click)="loginSubmitJwtlAuth()">login</button>
+</div>
+</div>
