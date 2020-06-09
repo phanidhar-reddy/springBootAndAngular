@@ -17,6 +17,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.filter.OncePerRequestFilter;
 
 @Configuration
 @EnableWebSecurity
@@ -53,16 +54,19 @@ public class JWTWebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity httpSecurity) throws Exception {
-		httpSecurity.csrf().disable().exceptionHandling()
-				.authenticationEntryPoint(jwtUnAuthorizedResponseAuthenticationEntryPoint).and().sessionManagement()
-				.sessionCreationPolicy(SessionCreationPolicy.STATELESS).and().authorizeRequests().anyRequest()
-				.authenticated();
-
-		httpSecurity.addFilterBefore(jwtAuthenticationTokenFilter, UsernamePasswordAuthenticationFilter.class);
-
-		httpSecurity.headers().frameOptions().sameOrigin() // H2 Console Needs this setting
-				.cacheControl(); // disable caching
-	}
+		/*
+		 * httpSecurity.csrf().disable().exceptionHandling()
+		 * .authenticationEntryPoint(jwtUnAuthorizedResponseAuthenticationEntryPoint).
+		 * and().sessionManagement()
+		 * .sessionCreationPolicy(SessionCreationPolicy.STATELESS).and().
+		 * authorizeRequests().anyRequest() .authenticated();
+		 * 
+		 * httpSecurity.addFilterBefore(jwtAuthenticationTokenFilter,
+		 * UsernamePasswordAuthenticationFilter.class);
+		 * 
+		 * httpSecurity.headers().frameOptions().sameOrigin() // H2 Console Needs this
+		 * setting .cacheControl(); // disable caching
+		 */	}
 
 	@Override
 	public void configure(WebSecurity webSecurity) throws Exception {

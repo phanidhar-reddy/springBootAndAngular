@@ -1,6 +1,21 @@
-package com.example.rest.webservice.constants;
+package com.rest.scloud.springCloud.constants;
 
 public class ControllerURIConstants {
+	
+	
+	/**
+	 * http://localhost:9214
+	 * 
+	 */
+	final public static String SERVICE_URL = "http://localhost:9214";
+	
+	/**
+	 * Authonticate
+	 * 
+	 */
+
+	final public static String AUTH_URI = "/authenticate";
+
 
 	/**
 	 * Contains Default URI used for todos /user/{username}/todos
@@ -38,4 +53,5 @@ public class ControllerURIConstants {
 	 */
 	final public static String URI_BASE_AUTH = "/basicauth";
 	
+
 }

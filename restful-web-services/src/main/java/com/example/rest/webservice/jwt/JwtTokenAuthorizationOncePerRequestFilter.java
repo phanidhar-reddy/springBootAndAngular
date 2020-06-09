@@ -42,7 +42,7 @@ public class JwtTokenAuthorizationOncePerRequestFilter extends OncePerRequestFil
 
 		final String requestTokenHeader = request.getHeader(this.tokenHeader);
 
-		String username = null;
+		String username = null; 
 		String jwtToken = null;
 		if (requestTokenHeader != null && requestTokenHeader.startsWith("Bearer ")) {
 			jwtToken = requestTokenHeader.substring(7);
@@ -61,7 +61,6 @@ public class JwtTokenAuthorizationOncePerRequestFilter extends OncePerRequestFil
 		if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
 
 			UserDetails userDetails = this.jwtInMemoryUserDetailsService.loadUserByUsername(username);
-
 			if (jwtTokenUtil.validateToken(jwtToken, userDetails)) {
 				UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(
 						userDetails, null, userDetails.getAuthorities());
